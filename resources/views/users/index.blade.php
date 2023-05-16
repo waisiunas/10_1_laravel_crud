@@ -28,6 +28,19 @@
                     </div>
                     <div class="card-body">
 
+                        @if (Session::has('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ Session::get('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @elseif (Session::has('failure'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         @if (count($users) > 0)
                             <table class="table table-bordered">
                                 <thead>
@@ -39,15 +52,16 @@
                                     </tr>
                                 </thead>
                                 @foreach ($users as $user)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        <a href="{{ route('user.edit', $user) }}" class="btn btn-primary">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            <a href="{{ route('user.edit', $user) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('user.delete', $user) }}"
+                                                class="btn btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 <tbody>
                                 </tbody>

@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('user.create') }}" method="post">
+                        <form action="{{ route('user.edit', $user) }}" method="post">
                             @csrf
 
                             <div class="mb-3">
@@ -50,7 +50,8 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    name="name" id="name" value="{{ $user->name }}"
+                                    name="name" id="name"
+                                    value="{{ old('name') ?? $user->name }}"
                                     placeholder="Enter your Name!">
                                 @error('name')
                                     <div class="text-danger">{{ $message }}</div>
@@ -61,7 +62,8 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" id="email" value="{{ $user->email }}" placeholder="Enter your Email!">
+                                    name="email" id="email" value="{{ old('email') ?? $user->email }}"
+                                    placeholder="Enter your Email!">
                                 @error('email')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

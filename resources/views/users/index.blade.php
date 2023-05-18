@@ -42,7 +42,7 @@
                         @endif
 
                         @if (count($users) > 0)
-                            <table class="table table-bordered">
+                            <table class="table table-bordered m-0">
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>

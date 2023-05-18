@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses</title>
+    <title>Students</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
@@ -19,10 +19,10 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
-                                <h5>Courses</h5>
+                                <h5>Students</h5>
                             </div>
                             <div class="col text-end">
-                                <a href="{{ route('course.create') }}" class="btn btn-outline-primary">Add Course</a>
+                                <a href="{{ route('student.create') }}" class="btn btn-outline-primary">Add Student</a>
                             </div>
                         </div>
                     </div>
@@ -41,26 +41,25 @@
                             </div>
                         @endif
 
-                        @if (count($courses) > 0)
+                        @if (count($students) > 0)
+
                             <table class="table table-bordered m-0">
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>
                                         <th>Name</th>
-                                        <th>Duration</th>
+                                        <th>Email</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                @foreach ($courses as $course)
+                                @foreach ($students as $student)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $course->name }}</td>
-                                        <td>{{ $course->duration }}</td>
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->email }}</td>
                                         <td>
-                                            <a href="{{ route('course.edit', $course) }}"
-                                                class="btn btn-primary">Edit</a>
-                                            <a href="{{ route('course.delete', $course) }}"
-                                                class="btn btn-danger">Delete</a>
+                                            <a href="{{ route('student.edit', $student) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('student.delete', $student) }}" class="btn btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

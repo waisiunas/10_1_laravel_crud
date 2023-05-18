@@ -2,9 +2,8 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
-use App\Models\Course;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +33,13 @@ Route::post('/course/create', [CourseController::class, 'store']);
 Route::get('/course/{course}/edit', [CourseController::class, 'edit'])->name('course.edit');
 Route::post('/course/{course}/edit', [CourseController::class, 'update']);
 Route::get('/course/{course}/delete', [CourseController::class, 'destroy'])->name('course.delete');
+
+Route::get('/students', [StudentController::class, 'index'])->name('students');
+Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');
+Route::post('/student/create', [StudentController::class, 'store']);
+Route::get('/student/{student}/edit', [StudentController::class, 'edit'])->name('student.edit');
+Route::post('/student/{student}/edit', [StudentController::class, 'update']);
+Route::get('/student/{student}/delete', [StudentController::class, 'destroy'])->name('student.delete');
 
 Route::get('/about', function () {
     return view('about');
